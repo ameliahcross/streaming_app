@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItlaTv", "ItlaTv\ItlaTv.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{3B295D18-F3E7-4805-9624-1DE0677DF855}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{16C2A5D8-C323-4072-8CE6-F73698D9D86C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3B295D18-F3E7-4805-9624-1DE0677DF855}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B295D18-F3E7-4805-9624-1DE0677DF855}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B295D18-F3E7-4805-9624-1DE0677DF855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C2A5D8-C323-4072-8CE6-F73698D9D86C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16C2A5D8-C323-4072-8CE6-F73698D9D86C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16C2A5D8-C323-4072-8CE6-F73698D9D86C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16C2A5D8-C323-4072-8CE6-F73698D9D86C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

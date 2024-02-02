@@ -1,0 +1,14 @@
+/Users/Amelia/repos/ItlaTv/Database/bin/Debug/net7.0/Database.deps.json
+/Users/Amelia/repos/ItlaTv/Database/bin/Debug/net7.0/Database.runtimeconfig.json
+/Users/Amelia/repos/ItlaTv/Database/bin/Debug/net7.0/Database.dll
+/Users/Amelia/repos/ItlaTv/Database/bin/Debug/net7.0/Database.pdb
+/Users/Amelia/repos/ItlaTv/Database/obj/Debug/net7.0/Database.csproj.AssemblyReference.cache
+/Users/Amelia/repos/ItlaTv/Database/obj/Debug/net7.0/Database.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Amelia/repos/ItlaTv/Database/obj/Debug/net7.0/Database.AssemblyInfoInputs.cache
+/Users/Amelia/repos/ItlaTv/Database/obj/Debug/net7.0/Database.AssemblyInfo.cs
+/Users/Amelia/repos/ItlaTv/Database/obj/Debug/net7.0/Database.csproj.CoreCompileInputs.cache
+/Users/Amelia/repos/ItlaTv/Database/obj/Debug/net7.0/Database.dll
+/Users/Amelia/repos/ItlaTv/Database/obj/Debug/net7.0/refint/Database.dll
+/Users/Amelia/repos/ItlaTv/Database/obj/Debug/net7.0/Database.pdb
+/Users/Amelia/repos/ItlaTv/Database/obj/Debug/net7.0/Database.genruntimeconfig.cache
+/Users/Amelia/repos/ItlaTv/Database/obj/Debug/net7.0/ref/Database.dll

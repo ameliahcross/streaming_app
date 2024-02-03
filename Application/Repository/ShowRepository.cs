@@ -31,5 +31,15 @@ namespace Application.Repository
 			_dbContext.Set<Show>().Remove(show);
 			await _dbContext.SaveChangesAsync();
 		}
+
+        public async Task<List<Show>> GetAllAsync()
+        {
+			return await _dbContext.Set<Show>().ToListAsync();
+        }
+
+		public async Task<Show> GetByIdAsync(int id)
+		{
+			return await _dbContext.Set<Show>().FindAsync(id);	
+		}
     }
 }

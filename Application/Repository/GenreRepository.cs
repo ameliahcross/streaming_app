@@ -25,6 +25,22 @@ namespace Application.Repository
             _dbContext.Entry(genre).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task DeleteAsync(Genre genre)
+        {
+            _dbContext.Set<Genre>().Remove(genre);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<List<Genre>> GetAllAsync()
+        {
+            return await _dbContext.Set<Genre>().ToListAsync();
+        }
+
+        public async Task<Genre> GetByIdAsync(int id)
+        {
+            return await _dbContext.Set<Genre>().FindAsync(id);
+        }
     }
 }
 

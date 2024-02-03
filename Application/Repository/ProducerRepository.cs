@@ -25,6 +25,22 @@ namespace Application.Repository
             _dbContext.Entry(producer).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task DeleteAsync(Producer producer)
+        {
+            _dbContext.Set<Producer>().Remove(producer);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<List<Producer>> GetAllAsync()
+        {
+            return await _dbContext.Set<Producer>().ToListAsync();
+        }
+
+        public async Task<Producer> GetByIdAsync(int id)
+        {
+            return await _dbContext.Set<Producer>().FindAsync(id);
+        }
     }
 }
 

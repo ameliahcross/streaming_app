@@ -33,16 +33,6 @@ namespace Application.Services
 
         public async Task<ShowViewModel> GetByIdAsync(int id)
         {
-            //var show = await _showRepository.GetByIdAsync(id);
-
-            //var showViewModel = new ShowViewModel
-            //{
-            //    Name = show.Name,
-            //    VideoUrl = show.VideoUrl
-            //};
-
-            //return showViewModel;
-
             var show = await _showRepository.GetByIdAsync(id);
             ShowViewModel showViewModel = new();
             showViewModel.Id = show.Id;

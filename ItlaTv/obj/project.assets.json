@@ -1133,6 +1133,19 @@
           }
         }
       },
+      "Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Database": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Application.dll": {}
+        }
+      },
       "Database/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -3468,6 +3481,11 @@
         "version.txt"
       ]
     },
+    "Application/1.0.0": {
+      "type": "project",
+      "path": "../Application/Application.csproj",
+      "msbuildProject": "../Application/Application.csproj"
+    },
     "Database/1.0.0": {
       "type": "project",
       "path": "../Database/Database.csproj",
@@ -3476,6 +3494,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Application >= 1.0.0",
       "Database >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0",
@@ -3508,6 +3527,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "/Users/Amelia/repos/ItlaTv/Application/Application.csproj": {
+              "projectPath": "/Users/Amelia/repos/ItlaTv/Application/Application.csproj"
+            },
             "/Users/Amelia/repos/ItlaTv/Database/Database.csproj": {
               "projectPath": "/Users/Amelia/repos/ItlaTv/Database/Database.csproj"
             }

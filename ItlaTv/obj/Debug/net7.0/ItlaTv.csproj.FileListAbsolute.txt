@@ -75,3 +75,5 @@
 /Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.pdb
 /Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.genruntimeconfig.cache
 /Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ref/ItlaTv.dll
+/Users/Amelia/repos/ItlaTv/ItlaTv/bin/Debug/net7.0/Application.dll
+/Users/Amelia/repos/ItlaTv/ItlaTv/bin/Debug/net7.0/Application.pdb

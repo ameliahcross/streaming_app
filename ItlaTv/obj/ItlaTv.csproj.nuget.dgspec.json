@@ -4,6 +4,63 @@
     "/Users/Amelia/repos/ItlaTv/ItlaTv/ItlaTv.csproj": {}
   },
   "projects": {
+    "/Users/Amelia/repos/ItlaTv/Application/Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/Amelia/repos/ItlaTv/Application/Application.csproj",
+        "projectName": "Application",
+        "projectPath": "/Users/Amelia/repos/ItlaTv/Application/Application.csproj",
+        "packagesPath": "/Users/oriontekdesign/.nuget/packages/",
+        "outputPath": "/Users/Amelia/repos/ItlaTv/Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/oriontekdesign/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/Amelia/repos/ItlaTv/Database/Database.csproj": {
+                "projectPath": "/Users/Amelia/repos/ItlaTv/Database/Database.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.308/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "/Users/Amelia/repos/ItlaTv/Database/Database.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -100,6 +157,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "/Users/Amelia/repos/ItlaTv/Application/Application.csproj": {
+                "projectPath": "/Users/Amelia/repos/ItlaTv/Application/Application.csproj"
+              },
               "/Users/Amelia/repos/ItlaTv/Database/Database.csproj": {
                 "projectPath": "/Users/Amelia/repos/ItlaTv/Database/Database.csproj"
               }

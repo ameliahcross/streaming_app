@@ -1,9 +1,35 @@
-﻿@{
+﻿@model Application.ViewModels.HomeViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4 text-light">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 mt-5 mx-3">
+
+    @if (Model.Shows == null || !Model.Shows.Any())
+        {
+            <h3 class="text-white">Lo sentimos. Por el momento no hay series disponibles.</h3>
+        }
+        else
+        {
+            foreach (var item in Model.Shows)
+            {
+                <div class="col mt-1 p-0">
+                    <div class="card text-white bg-dark h-100">
+                        <img class="bd-placeholder-img card-img-top" src="@item.ImageUrl" alt="Imagen de @item.Name"/>
+
+                        <div class="card-body">
+                            <h6 class="card-title text-white">@item.Name</h6>
+                            <p class="card-text text-info">@item.PrimaryGenreName @item.SecondaryGenreName</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="card-text text-secondary">@item.ProducerName</span>
+                                <button type="button" class="btn btn-sm btn-danger ms-auto">Ver</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
 </div>
 

@@ -34,7 +34,10 @@ namespace Application.Repository
 
         public async Task<List<Show>> GetAllAsync()
         {
-			return await _dbContext.Set<Show>().ToListAsync();
+            return await _dbContext.Shows
+		   .Include(show => show.Producer)
+		   .Include(show => show.Genres)
+		   .ToListAsync();
         }
 
 		public async Task<Show> GetByIdAsync(int id)

@@ -1,21 +1,23 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ItlaTv.Models;
+using Application.Services;
+using Database;
 
 namespace ItlaTv.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly HomeService _homeService;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ApplicationContext dbContext)
     {
-        _logger = logger;
+        _homeService = new(dbContext);
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        return View(await _homeService.GetAllViewModel());
     }
 
     public IActionResult Privacy()

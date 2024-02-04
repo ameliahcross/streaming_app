@@ -21,3 +21,7 @@ body {
   margin-bottom: 60px;
   background-color: #212529;
 }
+
+.card-height {
+    min-height: 450px;
+}

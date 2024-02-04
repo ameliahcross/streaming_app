@@ -7,25 +7,28 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Services
 {
-	public class GenreService
-	{
-		private readonly GenreRepository _genreRepository;
+    public class GenreService
+    {
+        private readonly GenreRepository _genreRepository;
 
-		public GenreService(ApplicationContext dbContext)
-		{
-			_genreRepository = new(dbContext);
-		}
-
+        public GenreService(ApplicationContext dbContext)
+        {
+            _genreRepository = new(dbContext);
+        }
 
         public async Task<List<GenreViewModel>> GetAllViewModel()
         {
-			var genrelist = await _genreRepository.GetAllAsync();
+            var genresList = await _genreRepository.GetAllAsync();
 
-			return genrelist.Select(genre => new GenreViewModel
-			{
-				Name = genre.Name
-			}).ToList();
+            return genresList.Select(genre => new GenreViewModel
+            {
+                Id = genre.Id,
+                Name = genre.Name,
+            }).ToList();
+
         }
+
+
     }
 }
 

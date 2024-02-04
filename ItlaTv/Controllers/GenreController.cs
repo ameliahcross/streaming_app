@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Services;
+using Database;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ItlaTv.Controllers
 {
     public class GenreController : Controller
     {
-        // GET: /<controller>/
-        public IActionResult Index()
+        private readonly GenreService _genreService;
+
+        public GenreController(ApplicationContext dbContext)
         {
-            return View();
+            _genreService = new(dbContext);
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            return View(await _genreService.GetAllViewModel());
         }
     }
 }

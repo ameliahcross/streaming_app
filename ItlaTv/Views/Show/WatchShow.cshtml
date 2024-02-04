@@ -1,0 +1,18 @@
+﻿@model Application.ViewModels.ShowViewModel
+
+@{
+    ViewData["Title"] = "Watch Show";
+}
+
+<h3 class="text-white text-center mt-3">@Model.Name</h3>
+
+<div class="row">
+    <div class="col-10 mx-auto">
+        <div class="ratio ratio-16x9 text-center my-3">
+            <iframe src="@Model.VideoUrl" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+
+

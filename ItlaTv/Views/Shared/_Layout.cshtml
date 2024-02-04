@@ -23,7 +23,13 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Show" asp-action="Show">Shows</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Producer" asp-action="Producer">Producers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Genre" asp-action="Genre">Genres</a>
                         </li>
                     </ul>
                     <form class="d-flex me-2" method="get">
@@ -38,7 +44,6 @@
                             <option value="7">sci-Fi</option>
                             <option value="8">drama</option>
                         </select>
-                        @*<button class="btn btn-outline-success btn-sm bg-dark text-secondary" type="submit">Search</button>*@
                     </form>
                     <form class="d-flex me-2" method="get">
                         <select class="form-select form-select-sm bg-dark text-secondary" aria-label=".form-select-sm example">
@@ -48,15 +53,12 @@
                             <option value="3">FX</option>
                             <option value="4">AMC</option>
                         </select>
-                        @*<button class="btn btn-outline-success btn-sm" type="submit">Search</button>*@
                     </form>
                     <form class="d-flex" method="get">
                         <div class="input-group input-group-sm">
                             <input type="text" class="form-control bg-dark input-sm" placeholder="Show" aria-label="show" aria-describedby="button-addon1">
                             <button class="btn btn-outline-success btn-sm" type="button" id="button-addon1">Search</button>
                         </div>
-                        @*<input class="form-control me-2 bg-dark input-sm" type="search" placeholder="Show" aria-label="Search">
-                        <button class="btn btn-outline-success btn-sm" type="submit">Search</button>*@
                     </form>
                 </div>
             </div>

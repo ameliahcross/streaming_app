@@ -14,8 +14,6 @@ namespace Application.ViewModels
         public string ProducerName { get; set; } 
         public string PrimaryGenreName { get; set; } 
         public string SecondaryGenreName { get; set; } 
-
-      
 	}
 }
 

@@ -8,7 +8,7 @@
 
     @if (Model.Shows == null || !Model.Shows.Any())
         {
-            <h3 class="text-white">Lo sentimos. Por el momento no hay series disponibles.</h3>
+            <h3 class="text-white text-center">Lo sentimos. Por el momento no hay series disponibles.</h3>
         }
         else
         {
@@ -23,13 +23,13 @@
                             <p class="card-text text-info">@item.PrimaryGenreName @item.SecondaryGenreName</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="card-text text-secondary">@item.ProducerName</span>
-                                <button type="button" class="btn btn-sm btn-danger ms-auto">Watch</button>
+                                <a asp-controller="Show" asp-action="WatchShow" asp-route-id="@item.Id" class="btn btn-sm btn-danger ms-auto">Watch</a>
+                                @*<input type="hidden" asp-for="@item.Id"/>*@
                             </div>
                         </div>
                     </div>
                 </div>
             }
         }
-
 </div>
 

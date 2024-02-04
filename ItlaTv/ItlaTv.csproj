@@ -27,4 +27,14 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Show\" />
+    <None Remove="Views\Producer\" />
+    <None Remove="Views\Genre\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Show\" />
+    <Folder Include="Views\Producer\" />
+    <Folder Include="Views\Genre\" />
+  </ItemGroup>
 </Project>

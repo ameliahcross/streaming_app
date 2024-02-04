@@ -27,7 +27,7 @@ namespace Application.Services
             }).ToList();
         }
 
-        // Método para Editar y Guardar
+        // Métodos para Editar y Guardar
         public async Task<SaveGenreViewModel> GetByIdSaveViewModel(int id)
         {
             var genre = await _genreRepository.GetByIdAsync(id);
@@ -47,6 +47,14 @@ namespace Application.Services
             await _genreRepository.UpdateAsync(genre);
         }
 
+        public async Task Add(SaveGenreViewModel genreToCreate)
+        {
+            Genre genre = new();
+            genre.Id = genreToCreate.Id;
+            genre.Name = genreToCreate.Name;
+
+            await _genreRepository.AddAsync(genre);
+        }
 
     }
 }

@@ -38,6 +38,22 @@ namespace ItlaTv.Controllers
             await _genreService.Update(saveGenreViewModel);
             return RedirectToRoute(new { controller = "Genre", action = "Index" });
         }
+
+        public async Task<IActionResult> Create()
+        {
+            return View("SaveGenre", new SaveGenreViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(SaveGenreViewModel newGenre)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("SaveGenre", newGenre);
+            }
+            await _genreService.Add(newGenre);
+            return RedirectToRoute(new { controller = "Genre", action = "Index" });
+        }
     }
 }
 

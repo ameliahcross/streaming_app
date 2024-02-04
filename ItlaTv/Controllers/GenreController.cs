@@ -54,6 +54,19 @@ namespace ItlaTv.Controllers
             await _genreService.Add(newGenre);
             return RedirectToRoute(new { controller = "Genre", action = "Index" });
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            // Retorna por default a la vista "Delete"
+            return View(await _genreService.GetByIdSaveViewModel(id));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            await _genreService.Delete(id);
+            return RedirectToRoute(new { controller = "Genre", action = "Index" });
+        }
     }
 }
 

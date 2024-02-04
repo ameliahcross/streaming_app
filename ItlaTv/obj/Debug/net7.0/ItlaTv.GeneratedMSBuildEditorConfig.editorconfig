@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/Amelia/repos/ItlaTv/ItlaTv
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/Amelia/repos/ItlaTv/ItlaTv/Views/Genre/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR2VucmUvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/Amelia/repos/ItlaTv/ItlaTv/Views/Genre/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR2VucmUvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

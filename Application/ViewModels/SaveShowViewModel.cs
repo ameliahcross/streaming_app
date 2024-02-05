@@ -3,10 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Application.ViewModels
 {
-	public class ShowViewModel
+	public class SaveShowViewModel
 	{
         public int Id { get; set; }
-
         [Required]
         public string Name { get; set; }
         [Required]
@@ -16,12 +15,7 @@ namespace Application.ViewModels
         [Required]
         public int ProducerId { get; set; }
         [Required]
-        public int PrimaryGenreId { get; set; } 
-        public int? SecondaryGenreId { get; set; } 
-        
-        public string ProducerName { get; set; } 
-        public string PrimaryGenreName { get; set; } 
-        public string SecondaryGenreName { get; set; } 
-	}
+        public int PrimaryGenreId { get; set; }
+        public int? SecondaryGenreId { get; set; }
+    }
 }
-

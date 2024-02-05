@@ -1,0 +1,79 @@
+﻿@model Application.ViewModels.SaveShowViewModel
+
+@{
+    bool editMode = Model.Id == 0 ? false : true;
+
+    ViewData["Title"] = editMode == false ? "Crear serie" : "Editar serie";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card bg-dark text-white">
+                <div class="card-header">
+                    <h3 class="text-center">@ViewData["Title"]</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Show" asp-action="@(editMode? "Edit": "Create")" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Nombre</label>
+                            <input asp-for="Name" class="form-control bg-dark text-white" placeholder="Ingrese el nombre de la productora">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="ImageUrl" class="form-label">Enlace de la imagen</label>
+                            <input asp-for="ImageUrl" class="form-control bg-dark text-white" placeholder="URL de la imagen">
+                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="VideoUrl" class="form-label">Enlace del video</label>
+                            <input asp-for="VideoUrl" class="form-control bg-dark text-white" placeholder="URL del video">
+                            <span asp-validation-for="VideoUrl" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select form-select-sm bg-dark text-secondary">
+                                <option selected>Productora</option>
+                                <option value="1">Netflix</option>
+                                <option value="2">HBO</option>
+                                <option value="3">FX</option>
+                                <option value="4">AMC</option>
+                            </select>
+                            <span asp-validation-for="ProducerId" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select form-select-sm bg-dark text-secondary">
+                                <option selected>Género primario</option>
+                                <option value="1">Horror</option>
+                                <option value="2">History</option>
+                                <option value="3">Action</option>
+                                <option value="4">Adventure</option>
+                                <option value="5">Thriller</option>
+                                <option value="6">Documentary</option>
+                                <option value="7">sci-Fi</option>
+                                <option value="8">drama</option>
+                            </select>
+                            <span asp-validation-for="PrimaryGenreId" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select form-select-sm bg-dark text-secondary">
+                                <option selected>Género secundario</option>
+                                <option value="1">Horror</option>
+                                <option value="2">History</option>
+                                <option value="3">Action</option>
+                                <option value="4">Adventure</option>
+                                <option value="5">Thriller</option>
+                                <option value="6">Documentary</option>
+                                <option value="7">sci-Fi</option>
+                                <option value="8">drama</option>
+                            </select>
+                            <span asp-validation-for="SecondaryGenreId" class="text-danger"></span>
+                        </div>
+                        <input type="hidden" asp-for="Id">
+                        <button type="submit" class="btn btn-outline-success">Guardar</button>
+                        <a asp-controller="Show" asp-action="Index" class="btn btn-outline-secondary">Volver atrás</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

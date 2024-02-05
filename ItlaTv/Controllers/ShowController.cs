@@ -17,9 +17,9 @@ namespace ItlaTv.Controllers
             _showService = new(dbContext);
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _showService.GetAllViewModel());
         }
 
         public async Task<IActionResult> WatchShow(int Id)

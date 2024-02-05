@@ -1,11 +1,3 @@
-/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.csproj.AssemblyReference.cache
-/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.GeneratedMSBuildEditorConfig.editorconfig
-/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.AssemblyInfoInputs.cache
-/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.AssemblyInfo.cs
-/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.csproj.CoreCompileInputs.cache
-/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.MvcApplicationPartsAssemblyInfo.cache
-/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.RazorAssemblyInfo.cache
-/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.RazorAssemblyInfo.cs
 /Users/Amelia/repos/ItlaTv/ItlaTv/bin/Debug/net7.0/appsettings.Development.json
 /Users/Amelia/repos/ItlaTv/ItlaTv/bin/Debug/net7.0/appsettings.json
 /Users/Amelia/repos/ItlaTv/ItlaTv/bin/Debug/net7.0/ItlaTv.staticwebassets.runtime.json
@@ -61,6 +53,14 @@
 /Users/Amelia/repos/ItlaTv/ItlaTv/bin/Debug/net7.0/Database.dll
 /Users/Amelia/repos/ItlaTv/ItlaTv/bin/Debug/net7.0/Database.pdb
 /Users/Amelia/repos/ItlaTv/ItlaTv/bin/Debug/net7.0/Application.pdb
+/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.csproj.AssemblyReference.cache
+/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.AssemblyInfoInputs.cache
+/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.AssemblyInfo.cs
+/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.csproj.CoreCompileInputs.cache
+/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.MvcApplicationPartsAssemblyInfo.cache
+/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.RazorAssemblyInfo.cache
+/Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/ItlaTv.RazorAssemblyInfo.cs
 /Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/staticwebassets/msbuild.ItlaTv.Microsoft.AspNetCore.StaticWebAssets.props
 /Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/staticwebassets/msbuild.build.ItlaTv.props
 /Users/Amelia/repos/ItlaTv/ItlaTv/obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.ItlaTv.props

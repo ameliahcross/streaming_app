@@ -2,6 +2,7 @@
 using Application.Repository;
 using Application.ViewModels;
 using Database;
+using Database.Models;
 
 namespace Application.Services
 {
@@ -14,17 +15,50 @@ namespace Application.Services
 			_producerRepository = new(dbContext);
         }
 
-
         public async Task<List<ProducerViewModel>> GetAllViewModel()
         {
-            var genrelist = await _producerRepository.GetAllAsync();
+            var producersList = await _producerRepository.GetAllAsync();
 
-            return genrelist.Select(genre => new ProducerViewModel
+            return producersList.Select(producer => new ProducerViewModel
             {
-                Name = genre.Name
+                Id = producer.Id,
+                Name = producer.Name
             }).ToList();
         }
 
+        public async Task<SaveProducerViewModel> GetByIdSaveViewModel(int id)
+        {
+            var producer = await _producerRepository.GetByIdAsync(id);
+
+            SaveProducerViewModel producerToSave = new();
+            producerToSave.Id = producer.Id;
+            producerToSave.Name = producer.Name;
+            return producerToSave;
+        }
+
+        public async Task Update(SaveProducerViewModel producerToSave)
+        {
+            Producer producer = new();
+            producer.Id = producerToSave.Id;
+            producer.Name = producerToSave.Name;
+
+            await _producerRepository.UpdateAsync(producer);
+        }
+
+        public async Task Add(SaveProducerViewModel producerToCreate)
+        {
+            Producer producer = new();
+            producer.Id = producerToCreate.Id;
+            producer.Name = producerToCreate.Name;
+
+            await _producerRepository.AddAsync(producer);
+        }
+
+        public async Task Delete(int id)
+        {
+            var producer = await _producerRepository.GetByIdAsync(id);
+            await _producerRepository.DeleteAsync(producer);
+        }
     }
 }
 

@@ -3,32 +3,64 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid justify-content-end">
+        <form class="me-2" method="get">
+            <select class="form-select form-select-sm bg-dark text-secondary" aria-label=".form-select-sm example">
+                <option selected>Género</option>
+                <option value="1">Horror</option>
+                <option value="2">History</option>
+                <option value="3">Action</option>
+                <option value="4">Adventure</option>
+                <option value="5">Thriller</option>
+                <option value="6">Documentary</option>
+                <option value="7">sci-Fi</option>
+                <option value="8">drama</option>
+            </select>
+        </form>
+        <form class="me-2" method="get">
+            <select class="form-select form-select-sm bg-dark text-secondary">
+                <option selected>Productora</option>
+                <option value="1">Netflix</option>
+                <option value="2">HBO</option>
+                <option value="3">FX</option>
+                <option value="4">AMC</option>
+            </select>
+        </form>
+        <form class="" method="get">
+            <div class="input-group input-group-sm">
+                <input type="text" class="form-control bg-dark input-sm" placeholder="Show" aria-label="Serie">
+                <button class="btn btn-outline-success btn-sm" type="button" id="button-addon1">Buscar</button>
+            </div>
+        </form>
+    </div>
+</nav>
 
 <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 mt-5 mx-3">
 
     @if (Model.Shows == null || !Model.Shows.Any())
+    {
+        <h3 class="text-white text-center">Lo sentimos. Por el momento no hay series disponibles.</h3>
+    }
+    else
+    {
+        foreach (var item in Model.Shows)
         {
-            <h3 class="text-white text-center">Lo sentimos. Por el momento no hay series disponibles.</h3>
-        }
-        else
-        {
-            foreach (var item in Model.Shows)
-            {
-                <div class="col mt-1 p-0">
-                    <div class="card text-white bg-dark h-100">
-                        <img class="bd-placeholder-img card-img-top" src="@item.ImageUrl" alt="Imagen de @item.Name"/>
+            <div class="col mt-1 p-0">
+                <div class="card text-white bg-dark h-100">
+                    <img class="bd-placeholder-img card-img-top" src="@item.ImageUrl" alt="Imagen de @item.Name" />
 
-                        <div class="card-body">
-                            <h6 class="card-title text-white">@item.Name</h6>
-                            <p class="card-text text-info">@item.PrimaryGenreName @item.SecondaryGenreName</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="card-text text-secondary">@item.ProducerName</span>
-                                <a asp-controller="Show" asp-action="WatchShow" asp-route-id="@item.Id" class="btn btn-sm btn-danger ms-auto">Watch</a>
-                            </div>
+                    <div class="card-body">
+                        <h6 class="card-title text-white">@item.Name</h6>
+                        <p class="card-text text-info">@item.PrimaryGenreName @item.SecondaryGenreName</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="card-text text-secondary">@item.ProducerName</span>
+                            <a asp-controller="Show" asp-action="WatchShow" asp-route-id="@item.Id" class="btn btn-sm btn-danger ms-auto">Watch</a>
                         </div>
                     </div>
                 </div>
-            }
+            </div>
         }
+    }
 </div>
 

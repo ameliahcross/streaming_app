@@ -8,8 +8,8 @@
 
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card bg-dark text-white">
+        <div class="col-md-7">
+            <div class="card bg-dark border-light text-white p-3">
                 <div class="card-header">
                     <h3 class="text-center">@ViewData["Title"]</h3>
                 </div>
@@ -17,7 +17,7 @@
                     <form asp-controller="Show" asp-action="@(editMode? "Edit": "Create")" method="post">
                         <div class="mb-3">
                             <label asp-for="Name" class="form-label">Nombre</label>
-                            <input asp-for="Name" class="form-control bg-dark text-white" placeholder="Ingrese el nombre de la productora">
+                            <input asp-for="Name" class="form-control bg-dark text-white" placeholder="Ingrese el nombre de la serie">
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
@@ -31,43 +31,39 @@
                             <span asp-validation-for="VideoUrl" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
-                            <select class="form-select form-select-sm bg-dark text-secondary">
-                                <option selected>Productora</option>
-                                <option value="1">Netflix</option>
-                                <option value="2">HBO</option>
-                                <option value="3">FX</option>
-                                <option value="4">AMC</option>
+                            <label asp-for="ProducerId" class="form-label">Productora</label>
+                            <select asp-for="ProducerId" class="form-select bg-dark text-secondary">
+                                <option value="0">Seleccione</option>
+                                @foreach (var producer in Model.Producers)
+                                {
+                                    <option value="@producer.Id">@producer.Name</option>
+                                }
                             </select>
                             <span asp-validation-for="ProducerId" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
-                            <select class="form-select form-select-sm bg-dark text-secondary">
-                                <option selected>Género primario</option>
-                                <option value="1">Horror</option>
-                                <option value="2">History</option>
-                                <option value="3">Action</option>
-                                <option value="4">Adventure</option>
-                                <option value="5">Thriller</option>
-                                <option value="6">Documentary</option>
-                                <option value="7">sci-Fi</option>
-                                <option value="8">drama</option>
+                            <label asp-for="PrimaryGenreId" class="form-label">Género primario</label>
+                            <select asp-for="PrimaryGenreId" class="form-select bg-dark text-secondary">
+                                <option value="0">Seleccione</option>
+                                @foreach (var genre in Model.Genres)
+                                {
+                                    <option value="@genre.Id">@genre.Name</option>
+                                }
                             </select>
                             <span asp-validation-for="PrimaryGenreId" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
-                            <select class="form-select form-select-sm bg-dark text-secondary">
-                                <option selected>Género secundario</option>
-                                <option value="1">Horror</option>
-                                <option value="2">History</option>
-                                <option value="3">Action</option>
-                                <option value="4">Adventure</option>
-                                <option value="5">Thriller</option>
-                                <option value="6">Documentary</option>
-                                <option value="7">sci-Fi</option>
-                                <option value="8">drama</option>
+                            <label asp-for="SecondaryGenreId" class="form-label">Género secundario</label>
+                            <select asp-for="SecondaryGenreId" class="form-select bg-dark text-secondary">
+                                <option value="0">Seleccione</option>
+                                @foreach (var genre in Model.Genres)
+                                {
+                                    <option value="@genre.Id">@genre.Name</option>
+                                }
                             </select>
                             <span asp-validation-for="SecondaryGenreId" class="text-danger"></span>
                         </div>
+
                         <input type="hidden" asp-for="Id">
                         <button type="submit" class="btn btn-outline-success">Guardar</button>
                         <a asp-controller="Show" asp-action="Index" class="btn btn-outline-secondary">Volver atrás</a>

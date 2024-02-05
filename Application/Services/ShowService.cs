@@ -2,17 +2,20 @@
 using Application.Repository;
 using Application.ViewModels;
 using Database;
+using Database.Models;
 
 namespace Application.Services
 {
 	public class ShowService
 	{
 		private readonly ShowRepository _showRepository;
+        private readonly GenreRepository _genreRepository;
 
-		public ShowService(ApplicationContext dbContext)
+        public ShowService(ApplicationContext dbContext)
 		{
 			_showRepository = new(dbContext);
-		}
+            _genreRepository = new(dbContext);
+        }
 
         public async Task<List<ShowViewModel>> GetAllViewModel()
         {
@@ -24,8 +27,8 @@ namespace Application.Services
                 Name = show.Name,
                 ImageUrl = show.ImageUrl,
                 VideoUrl = show.VideoUrl,
-                ProducerName = show.Producer.Name,
-                PrimaryGenreName = show.Genres.FirstOrDefault().Name,
+                ProducerName = show.Producer?.Name,
+                PrimaryGenreName = show.Genres.FirstOrDefault()?.Name,
                 SecondaryGenreName = show.Genres.Skip(1).FirstOrDefault()?.Name,
 
             }).ToList();
@@ -40,6 +43,31 @@ namespace Application.Services
             showViewModel.VideoUrl = show.VideoUrl;
             return showViewModel;
         }
+
+        public async Task Add(SaveShowViewModel showToCreate)
+        {
+            Show show = new()
+            {
+                Name = showToCreate.Name,
+                ImageUrl = showToCreate.ImageUrl,
+                VideoUrl = showToCreate.VideoUrl,
+                ProducerId = showToCreate.ProducerId,
+                Genres = new List<Genre>()
+            };
+
+            var primaryGenre = await _genreRepository.GetByIdAsync(showToCreate.PrimaryGenreId);
+
+            if (showToCreate.SecondaryGenreId.HasValue)
+            {
+                var secondaryGenre = await _genreRepository.GetByIdAsync(showToCreate.SecondaryGenreId.Value);
+                if (secondaryGenre != null)
+                {
+                    show.Genres.Add(secondaryGenre);
+                }
+            }
+            await _showRepository.AddAsync(show);
+        }
+
     }
 }
 

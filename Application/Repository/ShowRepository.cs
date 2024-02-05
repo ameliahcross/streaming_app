@@ -34,15 +34,21 @@ namespace Application.Repository
 
         public async Task<List<Show>> GetAllAsync()
         {
+			// Se deben incluir los navigation properties a listar
+			// ya que son aparte a las propiedades
             return await _dbContext.Shows
-		   .Include(show => show.Producer)
+		   .Include(producers => producers.Producer)
 		   .Include(show => show.Genres)
 		   .ToListAsync();
         }
 
 		public async Task<Show> GetByIdAsync(int id)
 		{
-			return await _dbContext.Set<Show>().FindAsync(id);	
-		}
+			return await _dbContext.Shows
+                .Include(producers => producers.Producer)
+				.Include(show => show.Genres)
+                .FirstOrDefaultAsync(show => show.Id == id);
+            //return await _dbContext.Set<Show>().FindAsync(id);	
+        }
     }
 }

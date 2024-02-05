@@ -10,6 +10,9 @@
             <h6 class="text-white mb-4 mt-4">
                 ¿Está seguro(a) que desea eliminar la productora "@Model.Name"?
             </h6>
+            <div class="alert alert-warning" role="alert">
+                Se eliminarán todas las series que pertenecen a <span class="text-danger">@Model.Name</span>
+            </div>
             <hr />
             <form class="text-right" method="post" asp-controller="Producer" asp-action="DeletePost">
                 <button class="btn btn-outline-danger btn-sm me-2" type="submit">Eliminar</button>

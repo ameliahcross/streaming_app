@@ -44,6 +44,22 @@ namespace Application.Services
             return showViewModel;
         }
 
+        public async Task<SaveShowViewModel> GetByIdSaveViewModel(int id)
+        {
+            var show = await _showRepository.GetByIdAsync(id);
+
+            SaveShowViewModel showToSave = new();
+            showToSave.Id = show.Id;
+            showToSave.Name = show.Name;
+            showToSave.ImageUrl = show.ImageUrl;
+            showToSave.VideoUrl = show.VideoUrl;
+            showToSave.ProducerId = show.ProducerId;
+            showToSave.PrimaryGenreId = show.Genres.FirstOrDefault().Id;
+            showToSave.SecondaryGenreId = show.Genres.Skip(1).FirstOrDefault()?.Id;
+
+            return showToSave;
+        }
+
         public async Task Add(SaveShowViewModel showToCreate)
         {
             Show show = new()
@@ -65,7 +81,14 @@ namespace Application.Services
                     show.Genres.Add(secondaryGenre);
                 }
             }
+            show.Genres.Add(primaryGenre);
             await _showRepository.AddAsync(show);
+        }
+
+        public async Task Delete(int id)
+        {
+            var show = await _showRepository.GetByIdAsync(id);
+            await _showRepository.DeleteAsync(show);
         }
 
     }

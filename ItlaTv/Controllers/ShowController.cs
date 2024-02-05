@@ -56,5 +56,18 @@ namespace ItlaTv.Controllers
             await _showService.Add(newShow);
             return RedirectToRoute(new { controller = "Show", action = "Index" });
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            // Retorna por default a la vista "Delete"
+            return View(await _showService.GetByIdSaveViewModel(id));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            await _showService.Delete(id);
+            return RedirectToRoute(new { controller = "Show", action = "Index" });
+        }
     }
 }

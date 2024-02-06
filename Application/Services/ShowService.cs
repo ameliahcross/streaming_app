@@ -5,16 +5,19 @@ using Database;
 using Database.Models;
 
 namespace Application.Services
-{
-	public class ShowService
+
+{   // Clase para la lógica de negocio, como las comprobaciones
+    public class ShowService
 	{
 		private readonly ShowRepository _showRepository;
         private readonly GenreRepository _genreRepository;
+        private readonly ProducerRepository _producerRepository;
 
         public ShowService(ApplicationContext dbContext)
 		{
 			_showRepository = new(dbContext);
             _genreRepository = new(dbContext);
+            _producerRepository = new(dbContext);
         }
 
         public async Task<List<ShowViewModel>> GetAllViewModel()
@@ -89,6 +92,20 @@ namespace Application.Services
         {
             var show = await _showRepository.GetByIdAsync(id);
             await _showRepository.DeleteAsync(show);
+        }
+
+        public async Task Update(SaveShowViewModel showToSave)
+        {
+            var show = await _showRepository.GetByIdAsync(showToSave.Id);
+
+            show.Name = showToSave.Name;
+            show.ImageUrl = showToSave.ImageUrl;
+            show.VideoUrl = showToSave.VideoUrl;
+            show.ProducerId = showToSave.ProducerId;
+
+            // Además del show con sus propiedades básicas, le debo pasar al method, los ID de los dos géneros
+            // que el show a editar tiene, para que el servicio los reciba y pueda actualizarlos.
+            await _showRepository.UpdateAsync(show, showToSave.PrimaryGenreId, showToSave.SecondaryGenreId);
         }
 
     }

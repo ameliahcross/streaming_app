@@ -16,6 +16,9 @@
                 <a class="btn btn-outline-secondary btn-sm" asp-controller="Genre" asp-action="Index">Cancelar</a>
                 <input type="hidden" asp-for="Id">
             </form>
+            <span class="text-danger my-3">
+                @TempData["DeleteGenreWarning"]
+            </span>
         </div>
     </div>
 </div>

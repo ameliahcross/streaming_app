@@ -41,6 +41,7 @@ namespace Application.Repository
         {
             return await _dbContext.Set<Genre>().FindAsync(id);
         }
+
     }
 }
 

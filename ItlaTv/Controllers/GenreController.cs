@@ -62,11 +62,22 @@ namespace ItlaTv.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeletePost(int id)
+        public async Task<IActionResult> DeletePost(int Id)
         {
-            await _genreService.Delete(id);
+            var genre = await _genreService.GetByIdSaveViewModel(Id);
+            var answer = await _genreService.Delete(Id);
+
+            if (answer == false)
+            {
+                TempData["DeleteGenreWarning"] = $" * No se puede eliminar el género: '{genre.Name}' porque hay series que dependen exclusivamente de él.";
+                return RedirectToAction("Delete", new { id = Id });
+            }
+
+            await _genreService.Delete(Id);
             return RedirectToRoute(new { controller = "Genre", action = "Index" });
         }
+            
+        
     }
 }
 

@@ -69,5 +69,35 @@ namespace ItlaTv.Controllers
             await _showService.Delete(id);
             return RedirectToRoute(new { controller = "Show", action = "Index" });
         }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var showViewModel = await _showService.GetByIdSaveViewModel(id);
+            // Debo llamar a method GetAll en el servicio de productoras y géneros
+            // para que me devuelva una lista la cual asignaré al viewModel a retornar
+            showViewModel.Producers = await _producerService.GetAllViewModel();
+            showViewModel.Genres = await _genreService.GetAllViewModel();
+
+            return View("SaveShow", showViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(SaveShowViewModel updatedShowViewModel)
+        {
+            // Validar que no ingresen el mismo género dos veces
+            if (updatedShowViewModel.SecondaryGenreId.HasValue && updatedShowViewModel.SecondaryGenreId == updatedShowViewModel.PrimaryGenreId)
+            {
+                ModelState.AddModelError("SecondaryGenreId", "Debe seleccionar un género secundario diferente al primario");
+            }
+            if (!ModelState.IsValid)
+            {
+                updatedShowViewModel.Genres = await _genreService.GetAllViewModel();
+                updatedShowViewModel.Producers = await _producerService.GetAllViewModel();
+                return View("Saveshow", updatedShowViewModel);
+            }
+            await _showService.Update(updatedShowViewModel);
+            return RedirectToRoute(new { controller = "Show", action = "Index" });
+        }
+
     }
 }

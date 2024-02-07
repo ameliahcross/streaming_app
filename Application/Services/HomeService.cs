@@ -34,6 +34,24 @@ namespace Application.Services
                 Producers = producers
             };
         }
+
+        public async Task<HomeViewModel> GetAllViewModelFiltered(FilterViewModel filters)
+        {
+            var showViewModels = await _showService.GetFilteredShowsAsync(filters);
+
+            var genres = await _genreService.GetAllViewModel();
+            var producers = await _producerService.GetAllViewModel();
+
+            return new HomeViewModel
+            {
+                Shows = showViewModels,
+                Genres = genres,
+                Producers = producers,
+                SelectedGenreId = filters.SelectedGenreId,
+                SelectedProducerId = filters.SelectedProducerId,
+                SearchByName = filters.SearchByName
+            };
+        }
     }
 }
 

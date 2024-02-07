@@ -77,5 +77,32 @@ namespace Application.Repository
                 .Include(show => show.Genres)
                 .ToListAsync();
         }
+
+  
+        public async Task<List<Show>> GetFilteredShowsAsync(int? genreId, int? producerId, string searchByName)
+        {
+            var query = _dbContext.Shows.AsQueryable();
+
+            if (genreId.HasValue)
+            {
+                query = query.Where(show => show.Genres.Any(genre => genre.Id == genreId.Value));
+            }
+
+            if (producerId.HasValue)
+            {
+                query = query.Where(show => show.ProducerId == producerId.Value);
+            }
+
+            if (!string.IsNullOrEmpty(searchByName))
+            {
+                query = query.Where(show => EF.Functions.Like(show.Name, $"%{searchByName}%"));
+            }
+
+            return await query
+                .Include(show => show.Producer)
+                .Include(show => show.Genres)
+                .ToListAsync();
+        }
+
     }
 }

@@ -58,9 +58,8 @@ namespace Application.Services
             await _genreRepository.AddAsync(genre);
         }
 
-
-        // Este method devuelve un booleano para saber qué mostrar en la vista dependiendo si el género
-        // a eliminar es o no único en una
+        // Este method me devuelve un booleano para saber qué mostrar en la vista dependiendo si el género
+        // a eliminar es o no único en una serie
         public async Task<bool> Delete(int id)
         {
             var genre = await _genreRepository.GetByIdAsync(id);

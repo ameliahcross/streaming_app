@@ -108,6 +108,26 @@ namespace Application.Services
             await _showRepository.UpdateAsync(show, showToSave.PrimaryGenreId, showToSave.SecondaryGenreId);
         }
 
+        // En ShowService
+        public async Task<IEnumerable<ShowViewModel>> GetFilteredShowsAsync(FilterViewModel filters)
+        {
+            var shows = await _showRepository.GetFilteredShowsAsync(filters.SelectedGenreId, filters.SelectedProducerId, filters.SearchByName);
+
+            return shows.Select(show => new ShowViewModel
+            {
+                Name = show.Name,
+                Id = show.Id,
+                ImageUrl = show.ImageUrl,
+                VideoUrl = show.VideoUrl,
+                ProducerId = show.ProducerId,
+
+                PrimaryGenreName = show.Genres.FirstOrDefault()?.Name,
+                SecondaryGenreName = show.Genres.Skip(1).FirstOrDefault().Name,
+                ProducerName = show.Producer?.Name
+            });
+        }
+
+
     }
 }
 

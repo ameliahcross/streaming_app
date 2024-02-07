@@ -1,37 +1,34 @@
-﻿@model Application.ViewModels.HomeViewModel
+﻿
+@model Application.ViewModels.HomeViewModel
 
 @{
     ViewData["Title"] = "Home Page";
 }
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid justify-content-end">
-        <form class="me-2" method="get">
-            <select class="form-select form-select-sm bg-dark text-secondary" aria-label=".form-select-sm example">
-                <option selected>Género</option>
-                <option value="1">Horror</option>
-                <option value="2">History</option>
-                <option value="3">Action</option>
-                <option value="4">Adventure</option>
-                <option value="5">Thriller</option>
-                <option value="6">Documentary</option>
-                <option value="7">sci-Fi</option>
-                <option value="8">drama</option>
-            </select>
-        </form>
-        <form class="me-2" method="get">
-            <select class="form-select form-select-sm bg-dark text-secondary">
-                <option selected>Productora</option>
-                <option value="1">Netflix</option>
-                <option value="2">HBO</option>
-                <option value="3">FX</option>
-                <option value="4">AMC</option>
-            </select>
-        </form>
-        <form class="" method="get">
-            <div class="input-group input-group-sm">
-                <input type="text" class="form-control bg-dark input-sm" placeholder="Show" aria-label="Serie">
-                <button class="btn btn-outline-success btn-sm" type="button" id="button-addon1">Buscar</button>
+        <form class="" method="post" asp-controller="Home" asp-action="Index">
+            <div class="me-2">
+                <select asp-for="SelectedGenreId" name="SelectedGenreId" id="genre-all" class="form-select form-select-sm bg-dark text-secondary">
+                    <option selected>Todos</option>
+                    @foreach (var genero in Model.Genres)
+                    {
+                        <option value="@genero.Id">@genero.Name</option>
+                    }
+                </select>
             </div>
+            <div class="me-2">
+                <select asp-for="SelectedProducerId" name="SelectedProducerId" id="producer-all" class="form-select form-select-sm bg-dark text-secondary">
+                    <option selected>Todas</option>
+                    @foreach (var productora in Model.Producers)
+                    {
+                        <option value="@productora.Id">@productora.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="input-group input-group-sm">
+                <input asp-for="SearchByName" name="SearchByName" type="text" class="form-control bg-dark input-sm" placeholder="Show">
+            </div>
+            <button class="btn btn-outline-success btn-sm" type="submit" id="search-btn">Filtrar</button>
         </form>
     </div>
 </nav>

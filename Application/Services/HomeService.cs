@@ -38,7 +38,6 @@ namespace Application.Services
         public async Task<HomeViewModel> GetAllViewModelFiltered(FilterViewModel filters)
         {
             var showViewModels = await _showService.GetFilteredShowsAsync(filters);
-
             var genres = await _genreService.GetAllViewModel();
             var producers = await _producerService.GetAllViewModel();
 

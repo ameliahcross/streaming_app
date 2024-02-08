@@ -58,32 +58,33 @@ namespace Application.Services
             await _genreRepository.AddAsync(genre);
         }
 
-        // me devuelve un booleano para saber qué mostrar en la vista dependiendo si el género a eliminar es o no único en un show
+        // Esto me devuelve un booleano para saber qué mostrar en la vista dependiendo
+        // si el género a eliminar es o no único en un show
         public async Task<bool> Delete(int id)
         {
             var genre = await _genreRepository.GetByIdAsync(id);
-
-            // Si el género no existe, no se puede proceder con la eliminación.
             if (genre == null)
             {
                 return false;
             }
 
-            // Aquí obtengo todas las series vinculadas con el Id del género que se quiere eliminar.
-            var showsWithThisGenre = await _showRepository.GetShowsByGenreIdAsync(id);
+            // Aquí obtengo la lista de series vinculadas con el Id del género que se quiere eliminar.
+            var showsWithThisGenreId = await _showRepository.GetShowsByGenreIdAsync(id);
 
-            // Verifico si alguna serie de la lista tiene este género como su ÚNICO género.
-            bool hasShowsWithSingleGenre = showsWithThisGenre.Any(show => show.Genres.Count == 1);
+            // Devuelvo TRUE si alguna serie de mi lista filtrada, tiene este género como su ÚNICO género.
+            bool hasShowsWithSingleGenre = showsWithThisGenreId.Any(show => show.Genres.Count == 1);
 
-            // Si alguna serie tiene este género como su único género, no se permite eliminar el género.
+            // Si alguna serie tiene este género como su único género, no permitirá eliminar el género
+            // en el controlador y aquí simplemente devuelvo true y NO ejecuto el method "DeleteAsync" del repositorio
             if (hasShowsWithSingleGenre)
             {
-                return false;
+                return true;
             }
 
-            // Si el género existe y no hay series que lo tengan como único género, se procede a eliminar el género.
+            // Si el género existe pero no hay series que lo tengan como único género,
+            // permitirá eliminar el género
             await _genreRepository.DeleteAsync(genre);
-            return true;
+            return false;
         }
 
     }

@@ -67,7 +67,7 @@ namespace ItlaTv.Controllers
             var genre = await _genreService.GetByIdSaveViewModel(Id);
             var answer = await _genreService.Delete(Id);
 
-            if (answer == false)
+            if (answer == true)
             {
                 TempData["DeleteGenreWarning"] = $" * No se puede eliminar el género: '{genre.Name}' porque hay series que dependen exclusivamente de él.";
                 return RedirectToAction("Delete", new { id = Id });

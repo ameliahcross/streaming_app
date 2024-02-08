@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using Database;
 using Database.Models;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Application.Repository
 {
-   // Clase para operaciones de acceso a datos directas, sin lógica de negocio
     public class ShowRepository
 	{
 		private readonly ApplicationContext _dbContext;
@@ -51,15 +52,14 @@ namespace Application.Repository
 
         public async Task<List<Show>> GetAllAsync()
         {
-			// Se deben incluir los navigation properties a listar
-			// ya que son aparte a las propiedades
+			// Debo incluir los navigation properties a listar ya que son aparte a las propiedades
             return await _dbContext.Shows
 		   .Include(producers => producers.Producer)
 		   .Include(show => show.Genres)
 		   .ToListAsync();
         }
 
-		public async Task<Show> GetByIdAsync(int id)
+        public async Task<Show> GetByIdAsync(int id)
 		{
 			return await _dbContext.Shows
                 .Include(producers => producers.Producer)
@@ -67,41 +67,41 @@ namespace Application.Repository
                 .FirstOrDefaultAsync(show => show.Id == id);
         }
 
-        // Para la relación de muchos a muchos que hay entre Show y Genre,
-        // aqui busco y devuelvo una lista de Shows que estén asociados al
-        // género que se le pase al method por parámetro (genreId)
+        // Para la relación de muchos a muchos que hay entre Show y Genre,en esta consulta busco y devuelvo una lista
+        // de Shows que estén asociados al parámetro (genreId) le pasé al method Delete, de GenreService
         public async Task<List<Show>> GetShowsByGenreIdAsync(int genreId)
         {
-            return await _dbContext.Shows
-                .Where(show => show.Genres.Any(genre => genre.Id == genreId))
-                .Include(show => show.Genres)
+            return await _dbContext.Shows // En la entidad Shows
+                .Where(show => show.Genres // Por cada Show, busca su lista de géneros
+                .Any(genre => genre.Id == genreId)) // De esta lista de géneros, verifica si alguna (.Any tiene
+                                                    // el mismo Id que le pasé por parámetro al method con (genreId)
+                .Include(show => show.Genres) // A esta lista, le incluyo los géneros relacionados
                 .ToListAsync();
         }
 
-  
         public async Task<List<Show>> GetFilteredShowsAsync(int? genreId, int? producerId, string searchByName)
         {
-            var query = _dbContext.Shows.AsQueryable();
+            var query = await GetAllAsync();
 
             if (genreId.HasValue)
             {
-                query = query.Where(show => show.Genres.Any(genre => genre.Id == genreId.Value));
+                query = query.Where(show => show.Genres
+                             .Any(genre => genre.Id == genreId))
+                             .ToList();
             }
-
             if (producerId.HasValue)
             {
-                query = query.Where(show => show.ProducerId == producerId.Value);
+                query = query.Where(show => show.ProducerId == producerId)
+                             .ToList();
             }
-
             if (!string.IsNullOrEmpty(searchByName))
             {
-                query = query.Where(show => EF.Functions.Like(show.Name, $"%{searchByName}%"));
+                query = query.Where(show => show.Name.ToLower()
+                              .Contains(searchByName))
+                              .ToList();
             }
 
-            return await query
-                .Include(show => show.Producer)
-                .Include(show => show.Genres)
-                .ToListAsync();
+            return query;
         }
 
     }

@@ -6,7 +6,7 @@ using Database.Models;
 
 namespace Application.Services
 
-{   // Clase para la lógica de negocio, como las comprobaciones
+{   
     public class ShowService
 	{
 		private readonly ShowRepository _showRepository;

@@ -38,8 +38,8 @@
                                 <td>
                                     <img src="@item.ImageUrl" alt="@item.Name" width="250"/>
                                 </td>
-                                <td>@item.PrimaryGenreName @item.SecondaryGenreName</td>
-                                <td>@item.ProducerName</td>
+                                <td class="text-info">@item.PrimaryGenreName @item.SecondaryGenreName</td>
+                                <td class="text-warning">@item.ProducerName</td>
                                 <td class="text-end">
                                     <a class="text-white me-3" asp-controller="Show" asp-action="Edit" asp-route-id="@item.Id">
                                         <i class="fas fa-edit"></i>

@@ -58,23 +58,30 @@ namespace Application.Services
             await _genreRepository.AddAsync(genre);
         }
 
-        // Este method me devuelve un booleano para saber qué mostrar en la vista dependiendo si el género
-        // a eliminar es o no único en una serie
+        // me devuelve un booleano para saber qué mostrar en la vista dependiendo si el género a eliminar es o no único en un show
         public async Task<bool> Delete(int id)
         {
             var genre = await _genreRepository.GetByIdAsync(id);
 
-            // Aquí obtengo todas las series vinculadas con el Id del género que se quiere eliminar
+            // Si el género no existe, no se puede proceder con la eliminación.
+            if (genre == null)
+            {
+                return false;
+            }
+
+            // Aquí obtengo todas las series vinculadas con el Id del género que se quiere eliminar.
             var showsWithThisGenre = await _showRepository.GetShowsByGenreIdAsync(id);
 
-            // Verifico si alguna serie de la lista de arriba, tiene este género como UNICO género
+            // Verifico si alguna serie de la lista tiene este género como su ÚNICO género.
             bool hasShowsWithSingleGenre = showsWithThisGenre.Any(show => show.Genres.Count == 1);
 
+            // Si alguna serie tiene este género como su único género, no se permite eliminar el género.
             if (hasShowsWithSingleGenre)
             {
                 return false;
             }
 
+            // Si el género existe y no hay series que lo tengan como único género, se procede a eliminar el género.
             await _genreRepository.DeleteAsync(genre);
             return true;
         }

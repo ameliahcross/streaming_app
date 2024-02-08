@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uTdjc9av8j26wnS3P29CZ3TSwrSW4oISF1BRtBTFEGA=",
+  "Hash": "Mu6Hg+fYd7w8NQPtSmRQTcXMQr1mMCTEXoULGe61+vw=",
   "Source": "ItlaTv",
   "BasePath": "_content/ItlaTv",
   "Mode": "Default",
@@ -83,6 +83,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/Users/Amelia/repos/ItlaTv/ItlaTv/wwwroot/img/404.webp",
+      "SourceId": "ItlaTv",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/Amelia/repos/ItlaTv/ItlaTv/wwwroot/",
+      "BasePath": "_content/ItlaTv",
+      "RelativePath": "img/404.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/404.webp"
+    },
+    {
+      "Identity": "/Users/Amelia/repos/ItlaTv/ItlaTv/wwwroot/img/sad_tv.png",
+      "SourceId": "ItlaTv",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/Amelia/repos/ItlaTv/ItlaTv/wwwroot/",
+      "BasePath": "_content/ItlaTv",
+      "RelativePath": "img/sad_tv.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/sad_tv.png"
     },
     {
       "Identity": "/Users/Amelia/repos/ItlaTv/ItlaTv/wwwroot/js/site.js",

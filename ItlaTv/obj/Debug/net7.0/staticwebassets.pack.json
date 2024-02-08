@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/Amelia/repos/ItlaTv/ItlaTv/wwwroot/img/404.webp",
+      "PackagePath": "staticwebassets/img/404.webp"
+    },
+    {
+      "Id": "/Users/Amelia/repos/ItlaTv/ItlaTv/wwwroot/img/sad_tv.png",
+      "PackagePath": "staticwebassets/img/sad_tv.png"
+    },
+    {
       "Id": "/Users/Amelia/repos/ItlaTv/ItlaTv/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },

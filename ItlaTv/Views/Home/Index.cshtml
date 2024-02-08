@@ -3,61 +3,70 @@
 
 @{
     ViewData["Title"] = "Home Page";
-}
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid justify-content-end">
-        <form class="" method="post" asp-controller="Home" asp-action="Index">
-            <div class="me-2">
+} 
+<div class="container-fluid mb-5">
+    <form method="post" asp-controller="Home" asp-action="Index">
+        <div class="row bg-dark d-flex justify-content-end">
+            <div class="col-auto">
                 <select asp-for="SelectedGenreId" name="SelectedGenreId" id="genre-all" class="form-select form-select-sm bg-dark text-secondary">
-                    <option selected>Todos</option>
+                    <option selected>Todos los géneros</option>
                     @foreach (var genero in Model.Genres)
                     {
                         <option value="@genero.Id">@genero.Name</option>
                     }
                 </select>
             </div>
-            <div class="me-2">
+            <div class="col-auto">
                 <select asp-for="SelectedProducerId" name="SelectedProducerId" id="producer-all" class="form-select form-select-sm bg-dark text-secondary">
-                    <option selected>Todas</option>
+                    <option selected>Todas las productoras</option>
                     @foreach (var productora in Model.Producers)
                     {
                         <option value="@productora.Id">@productora.Name</option>
                     }
                 </select>
             </div>
-            <div class="input-group input-group-sm">
-                <input asp-for="SearchByName" name="SearchByName" type="text" class="form-control bg-dark input-sm" placeholder="Show">
+            <div class="col-auto">
+                <input asp-for="SearchByName" name="SearchByName" type="text" class="form-control form-control-sm bg-dark text-white fst-italic" placeholder="Buscar por serie">
             </div>
-            <button class="btn btn-outline-success btn-sm" type="submit" id="search-btn">Filtrar</button>
-        </form>
+            <div class="col-auto">
+                <button class="btn btn-outline-success btn-sm" type="submit">Aplicar filtros</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@if (Model.Shows == null || !Model.Shows.Any())
+{
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <img src="~/img/sad_tv.png" alt="Descripción de la imagen" />
+            <h3 class="text-white mt-3">Lo sentimos. No se encontraron series disponibles.</h3>
+        </div>
     </div>
-</nav>
-
-<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 mt-5 mx-3">
-
-    @if (Model.Shows == null || !Model.Shows.Any())
-    {
-        <h3 class="text-white text-center">Lo sentimos. Por el momento no hay series disponibles.</h3>
-    }
-    else
-    {
-        foreach (var item in Model.Shows)
+}
+else
+{
+    <div class="row row-cols-md-4 mt-2">
+        @foreach (var item in Model.Shows)
         {
-            <div class="col mt-1 p-0">
-                <div class="card text-white bg-dark h-100">
-                    <img class="bd-placeholder-img card-img-top" src="@item.ImageUrl" alt="Imagen de @item.Name" />
+            <div class="col-md-3 px-2">
+                <div class="col pb-2 p-0">
+                    <div class="card text-white bg-dark h-100">
+                        <img class="bd-placeholder-img card-img-top" src="@item.ImageUrl" alt="Imagen de @item.Name" />
 
-                    <div class="card-body">
-                        <h6 class="card-title text-white">@item.Name</h6>
-                        <p class="card-text text-info">@item.PrimaryGenreName @item.SecondaryGenreName</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="card-text text-secondary">@item.ProducerName</span>
-                            <a asp-controller="Show" asp-action="WatchShow" asp-route-id="@item.Id" class="btn btn-sm btn-danger ms-auto">Watch</a>
+                        <div class="card-body">
+                            <h6 class="card-title text-white">@item.Name</h6>
+                            <p class="card-text text-info">@item.PrimaryGenreName @item.SecondaryGenreName</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="card-text text-secondary">@item.ProducerName</span>
+                                <a asp-controller="Show" asp-action="WatchShow" asp-route-id="@item.Id" class="btn btn-sm btn-danger ms-auto">Ver</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         }
-    }
-</div>
+    </div>
+}
+
 

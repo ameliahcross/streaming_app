@@ -19,9 +19,9 @@ namespace Application.ViewModels
         public int PrimaryGenreId { get; set; } 
         public int? SecondaryGenreId { get; set; } 
         
-        public string ProducerName { get; set; } 
+        public string? ProducerName { get; set; } 
         public string PrimaryGenreName { get; set; } 
-        public string SecondaryGenreName { get; set; }
+        public string? SecondaryGenreName { get; set; }
 
         public IEnumerable<GenreViewModel> Genres { get; set; }
         public IEnumerable<ProducerViewModel> Producers { get; set; }

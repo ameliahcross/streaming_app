@@ -36,5 +36,9 @@
     <Folder Include="Views\Show\" />
     <Folder Include="Views\Producer\" />
     <Folder Include="Views\Genre\" />
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\img\" />
   </ItemGroup>
 </Project>
